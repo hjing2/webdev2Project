@@ -3,7 +3,7 @@
 
     require('connect.php');
 
-    $query = "SELECT * FROM animals ORDER BY animal_id DESC LIMIT 6";
+    $query = "SELECT * FROM animals ORDER BY animal_id DESC LIMIT 8";
 
     $statement = $db->prepare($query);
 
@@ -30,68 +30,57 @@
     <!-- Remember that alternative syntax is good and html inside php is bad -->
 
     <div id="wrapper">
+
         <?php include('header.php'); ?> 
         <main>       
             
-            <div class="sidebar">
-                <ul>
-                    <li><a href="adoptable_list.php">Adoptable Pets</a></li>
-                    <li><a href="pet_forum.php">Pet Forum</a></li>
-                    <li><a href="adoption_stories.php">Adoption Stories</a></li>
-                    <li><a href="adoption_guidelines.php">Adoption Guidelines</a></li>
-                    <li><a href="volunteer_application.php">Volunteer Application</a></li>
-                </ul>
-            </div>
+            <?php include('sidebar.php'); ?>
 
             <div class="rightside">
+                
+                <h2 class="homepage_h2_title"><a href="adoptable_list.php">Adoptable Pets</a></h2>
                 <div id="all_animals">
-                    <h3><a href="adoptable_list.php">Adoptable Pets</a></h3>
-                    <?php while($row = $statement->fetch()): ?>
-                    <div class="animal_info">
-                        <h3><a href="show_animal.php?animal_id=<?= $row['animal_id'] ?>"><?php echo $row['age']."-year-old ". $row['type'] ?></a></h2>
-                        <img class="small_animal_image" src="<?= $row['image_path'] ?>" alt="<?php echo $row['age']."years old". $row['type'] ?>">
+                
+                    <div class="homepage_animal_list">
+                        <?php while($row = $statement->fetch()): ?>
+                        <div class="homepage_animal_info">
+                            <h3><a href="show_animal.php?animal_id=<?= $row['animal_id'] ?>"><?php echo $row['age']."-year-old ". $row['type']." ".$row['name'] ?></a></h3>
+                            <img class="small_animal_image" src="<?= $row['image_path'] ?>" alt="<?php echo $row['age']."-years-old ". $row['type']." ".$row['name'] ?>">
 
-                        <div class="animal_description">
-                            <p>
-                                <?php echo substr($row['description'], 0, 50);  ?>
-                                <?php if (strlen($row['description']) > 50) : ?>
-                                    ... <a href="show_animal.php?animal_id=<?= $row['animal_id'] ?>">Know more about it</a>
-                                <?php endif; ?>
-                            </p>
-                        </div>
-                        <!-- <p>
-                            <small>
-                            <?php
-                                $formattedDate = date("F d, Y, h:i A", strtotime($row['date']));
-                                echo "Info updated: ".$formattedDate;
-                            ?>
-                            <a href="edit.php?id=<?= $row['id'] ?>">edit</a>
-                            </small>
-                        </p> -->
-                    </div>  
-                    <?php endwhile; ?>        
+                            <div class="animal_description">
+                                <p>
+                                    <?php echo substr($row['description'], 0, 50);  ?>
+                                    <?php if (strlen($row['description']) > 50) : ?>
+                                        ... <a href="show_animal.php?animal_id=<?= $row['animal_id'] ?>">Explore more</a>
+                                    <?php endif; ?>
+                                </p>
+                            </div>
+                        </div>  
+                        <?php endwhile; ?>  
+                    </div>
                 </div>
 
-                <div class="adoption_story">
+                <h2 class="homepage_h2_title"><a href="story_list.php">Adoption Stories</a></h2>
+                <div class="adoption_story_list">
                     <?php while($row2 = $statement2->fetch()): ?>
-                    <h4 class="story_title"><a href="adoption_story.php?animal_id=<?= $row2['animal_id'] ?>"><?= $row2['title'] ?></a></h4>
+                    <h4 class="story_title"><a href="show_story.php?story_id=row2['story_id'] ?>"><?= $row2['title'] ?></a></h4>
                     <p>
                         <small>
                         <?php
                             $formattedDate2 = date("F d, Y, h:i A", strtotime($row2['publish_date']));
                             echo $formattedDate2;
                         ?>
-                        <a href="edit.php?animalid=<?= $row2['animal_id'] ?>">edit</a>
                         </small>
                     </p>
                     <div class="story_content">
                         <?php echo substr($row2['content'], 0, 100);  ?>
                         <?php if (strlen($row2['content']) > 100) : ?>
-                            ... <a href="showblog.php?animal_id=<?= $row2['animal_id'] ?>">Read Full Story</a>
+                            ... <a href="showblog.php?story_id=<?= $row2['story_id'] ?>">Read Full Story</a>
                         <?php endif; ?>
                     </div>
                     <?php endwhile; ?>  
-                </div>  
+                </div> 
+                             
             </div>
         </main>
 

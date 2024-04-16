@@ -6,20 +6,61 @@ body {
 }
 
 #header {
-    background-color: #444;
-    color: darkred;
-    padding: 10px;
+    /* Updated to a light linear gradient */
+    background: linear-gradient(to right, #faf2f0, #efc5b6);
+    color: #6a515e; 
+    padding: 15px;
     text-align: center;
     margin: 0;
 }
 
 #header h1 a {
-    color: #fff;
+    /* Updated font color */
+    color: #b68fa6;
     text-decoration: none;
 }
 
+.search_form {
+    background: transparent;
+    margin-bottom: -10px;
+}
+
+.search_form input,
+.search_form button {
+    background: transparent;
+    border-color: #b68fa6;
+    border-radius: 5px;
+}
+
+.search_form input {
+    width: 150px;
+    color: #000;
+    padding: 5px;
+    transition: width 0.4s ease-in-out;
+}
+
+.search_form button {
+    color: #000;
+    cursor: pointer;
+}
+
+.logout_link,
+.login_link {
+    margin-right: 70px;
+}
+
+.login_link  {
+    float: right;
+    font-size: 12px;
+}
+
+.logout_link {
+    float: right;
+    font-size: 12px;
+}
+
 #menu {
-    background-color: #444;
+    background-color: #F0D8D4;
     padding: 10px;
     text-align: center;
     display: flex;
@@ -29,7 +70,7 @@ body {
 }
 
 #menu a {
-    color: #fff;
+    color: #6a515e;
     text-decoration: none;
     padding: 10px;
     margin: 0 30px;
@@ -40,46 +81,227 @@ body {
     margin-bottom: -50px; 
 }
 
-#all_blogs {
+main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+/*    background-color: #fff;*/
+}
+
+.sidebar {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.rightside {
+    flex: 4;
+    padding: 60px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.rightside .homepage_h2_title {
+    text-align: center;
+    color: #FA8072 !important;
+}
+
+.rightside .homepage_h2_title a{
+    color: #FA8072 !important;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.sort_by,
+.type_category {
+    flex: 1;
+}
+
+.add_new_animal_message {
+    text-align: right;
+    padding-right: 30px;
+    display: block;
+}
+
+
+.edit_animal_link_on_list_page {
+    text-align: right;
+    padding-right: 30px;
+    display: block;
+}
+
+.animal_info:hover {
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.small_animal_image {
+    width: 100%;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #6a515e;
+    text-decoration: none;
+}
+
+.animal_edit_link {
+    float: right;
+}
+
+/*#all_animals, .adoption_story_list {
     max-width: 800px;
     margin: 20px auto;
     padding-bottom: 50px;
+
 }
 
-.blog_post {
+.adoption_story_list {
+    flex-basis: 48%;
+    margin-top: 30px;
+}*/
+
+#animal_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 0 0 50%; 
+    box-sizing: border-box; 
+    margin-top: 30px;
+    flex-basis: 48%;
+}
+
+.homepage_animal_list {
+    width: 100%;
+/*    display: flex;*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+/*    flex-wrap: wrap;*/
+    /*justify-content: space-between;
+    box-sizing: border-box; */
+}
+
+p, .animal_description p, .story_content {
+    margin: 10px 0;
+    line-height: 1.6;
+
+}
+
+.small_animal_image {
+    width: 60%;
+    margin-bottom: 40px;
+    margin-left: 20px;
+}
+
+
+
+
+
+
+
+#animal_details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.animal_detail1, .animal_detail2 {
+    flex-basis: 50%; 
+}
+
+#animal_wrapper {
+    margin: 0 auto;
+    padding: 0px;
     background-color: #fff;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.blog_post h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.animal_image {
+    width: 60%;
+    margin-bottom: 40px;
+    margin-left: 20px;
 }
 
-.blog_post p {
-    color: #555;
-    margin-bottom: 10px;
+.animal_info {  
+    text-align: center;
+    flex-basis: 48%;
+    margin-top: 30px;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+    box-sizing: border-box;  
 }
 
-.error_post {
-    color: red;
+.animal_info p {
+    margin: 10px 0;
 }
 
-.blog_content {
-    color: #333;
+.animal_description p {
+    color: #6A515E;
+}
+
+.homepage_animal_info {
+    text-align: center;
+/*    flex-basis: 48%;*/
+/*    max-width: 300px;*/
+    margin-top: 30px;
+    box-sizing: border-box;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.story_title a{
+    color: #b094b3;
+}
+
+.story_content p{
+    color: #6A515E;
+}
+
+.adoption_story_list p small{
+    color: #6A515E;
+}
+
+main .rightside .pagination a.active {
+    color:#EFA387; 
+    border-radius:5px ;
+    text-decoration: none;
+}
+
+.pagination {
+    margin-top: 50px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
 }
 
 #footer {
     height: 50px; 
-    background-color: #333;
-    color: #fff;
+    background-color: #fac4b7;
+    color: #b68fa6;
     padding: 10px;
     text-align: center;
 }
-
+/*
 nav {
     background-color: #333;
     padding: 0px;
@@ -91,14 +313,26 @@ nav a {
     text-decoration: none;
     padding: 10px;
     margin: 0 10px;
+}*/
+.homepage_h3_title h3{
+    color: #EFA387;
+    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 50px;
 }
 
 h3 {
-    color: #333;
+    color: #EFA387;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 30px;
 }
+
+h3 a {
+    color: #b094b3;
+}
+
 
 form {
     max-width: 700px;
@@ -106,13 +340,14 @@ form {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
 }
 
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    color: #EFA387;
 }
 
 input, textarea {
@@ -123,11 +358,38 @@ input, textarea {
 }
 
 input[type="submit"] {
-    background-color: #333;
+    background-color: #EFA387;
     color: #fff;
     cursor: pointer;
 }
 
+
 input[type="submit"]:hover {
-    background-color: #555;
+    background-color: #EC7F58;
 }
+
+/*.sort_form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort_form select {
+    width: 70%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #EFA387;
+}
+
+.sort_form .sort_input {
+    width: 25%;
+    background-color: #EFA387;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sort_form .sort_input:hover {
+    background-color: #EC7F58;
+}*/
