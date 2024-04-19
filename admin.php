@@ -44,18 +44,20 @@
                 <th>Action</th>
             </tr>
 
-            <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)): ?>       
-               <tr>
-                    <td> <?=$row['user_id'] ?> </td>
-                    <td> <?=$row['user_name'] ?></td>
-                    <td> <?=$row['age'] ?></td>
-                    <td> <?=$row['gender'] ?></td>
-                    <td> <?=$row['pet_experience'] ?></td>
-                    <td> <?=$row['contact'] ?></td>
-                    <td> <?=$row['email_address'] ?></td>
-                    <td> <?=$row['is_admin'] ?></td>
-                    <td><a href="user_edit.php?user_id=<?=$row['user_id'] ?>">Edit</a></td>
-                </tr>
+            <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)): ?>  
+               <?php if ($row['is_admin'] != 1): ?>     
+                   <tr>
+                        <td> <?=$row['user_id'] ?> </td>
+                        <td> <?=$row['user_name'] ?></td>
+                        <td> <?=$row['age'] ?></td>
+                        <td> <?=$row['gender'] ?></td>
+                        <td> <?=$row['pet_experience'] ?></td>
+                        <td> <?=$row['contact'] ?></td>
+                        <td> <?=$row['email_address'] ?></td>
+                        <td> <?=$row['is_admin'] ?></td>
+                        <td><a href="user_edit.php?user_id=<?=$row['user_id'] ?>">Edit</a></td>
+                    </tr>
+            <?php endif; ?>
             <?php endwhile; ?>
 
         </table>

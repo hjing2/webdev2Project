@@ -208,12 +208,6 @@ p, .animal_description p, .story_content {
     margin-left: 20px;
 }
 
-
-
-
-
-
-
 #animal_details {
     display: flex;
     flex-wrap: wrap;
@@ -223,6 +217,18 @@ p, .animal_description p, .story_content {
 
 .animal_detail1, .animal_detail2 {
     flex-basis: 50%; 
+}
+
+#animal_details .no_photo {
+    box-sizing: border-box;
+    margin-left: 50px;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 #animal_wrapper {

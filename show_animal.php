@@ -64,7 +64,12 @@
             <div class="rightside">
                 <div id="animal_details">
                     <div class="animal_detail1">
-                        <?php if(!(($row['image_path']) === NULL) || !(($row['image_path']) === '')): ?>
+
+                        <?php if((($row['image_path']) === NULL) || (($row['image_path']) === '')): ?>
+                            <div class="no_photo">
+                                <p>No photo</p>
+                            </div>
+                        <?php else: ?>
                             <img class="animal_image" src="<?= $row['image_path'] ?>" alt="<?= $row['breed'] ?>">
                         <?php endif; ?>
                     </div>
